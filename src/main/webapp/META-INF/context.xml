@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/test-jpacache">
+    <Resource auth="Container" driverClassName="org.apache.derby.jdbc.ClientDriver" maxActive="20" maxIdle="10" maxWait="-1" name="JPACACHEDS" password="app" type="javax.sql.DataSource" url="jdbc:derby://localhost/memory:jpatest;create=true" username="app"/>
+</Context>
