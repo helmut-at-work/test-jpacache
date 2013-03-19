@@ -10,8 +10,8 @@ import javax.sql.DataSource;
 @Stateless
 public class Manager {
 
-    @Resource
-    private DataSource JPACACHETEST;
+    @Resource(name = "JPACACHETEST")
+    private DataSource myDataSource;
     @PersistenceContext
     EntityManager em;
 
@@ -20,7 +20,9 @@ public class Manager {
     }
 
     public ParentNode getParentNode() {
-        return (ParentNode) em.createQuery("Select p from ParentNode p").getSingleResult();
+        ParentNode p = (ParentNode) em.createQuery("Select p from ParentNode p").getSingleResult();
+        em.refresh(p);
+        return p;
     }
 
     public void removeParentNodes() {
@@ -39,6 +41,6 @@ public class Manager {
     }
 
     public DataSource geDataSource() {
-        return this.JPACACHETEST;
+        return this.myDataSource;
     }
 }
